@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import List from "./components/List";
 import "./App.css";
 import useTime from "./useTime";
 import ButtonCounter from "./ButtonCounter";
+import Clock from "./Clock";
+import ComputeIntensive from "./ComputeExpensive";
 
 function App() {
   let TASKS = [
@@ -63,12 +65,12 @@ function App() {
   const handleButtonClick = () => {
     setCount(count + 1);
   };
-  const currentTime = useTime();
+  const countList = useMemo(() => [count], [count]);
   return (
     <>
       <h1>ToDo List</h1>
-      <span>The current time is: {currentTime.toLocaleTimeString()}</span>
       <ButtonCounter count={count} />
+      <ComputeIntensive count={countList} />
       <button onClick={handleButtonClick}>click on me</button>
       <div>
         <input

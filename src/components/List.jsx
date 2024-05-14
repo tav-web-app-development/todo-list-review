@@ -2,6 +2,7 @@ import React from "react";
 function List({ inputedText, showCompleted, TASKS }) {
   if (inputedText) {
     TASKS = TASKS.filter((task) => {
+      console.log("filtering");
       return task.name.toLowerCase().indexOf(inputedText.toLowerCase()) !== -1;
     });
   }
