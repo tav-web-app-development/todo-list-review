@@ -1,6 +1,8 @@
 import { useState } from "react";
 import List from "./components/List";
 import "./App.css";
+import useTime from "./useTime";
+import ButtonCounter from "./ButtonCounter";
 
 function App() {
   let TASKS = [
@@ -57,10 +59,17 @@ function App() {
   ];
   const [showCompleted, setShowCompeleted] = useState(false);
   const [inputedText, setInputedText] = useState("");
-
+  const [count, setCount] = useState(0);
+  const handleButtonClick = () => {
+    setCount(count + 1);
+  };
+  const currentTime = useTime();
   return (
     <>
       <h1>ToDo List</h1>
+      <span>The current time is: {currentTime.toLocaleTimeString()}</span>
+      <ButtonCounter count={count} />
+      <button onClick={handleButtonClick}>click on me</button>
       <div>
         <input
           type="text"

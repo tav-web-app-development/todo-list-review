@@ -1,3 +1,4 @@
+import React from "react";
 function List({ inputedText, showCompleted, TASKS }) {
   if (inputedText) {
     TASKS = TASKS.filter((task) => {
